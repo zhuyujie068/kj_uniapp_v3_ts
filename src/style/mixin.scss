@@ -1,0 +1,71 @@
+@mixin bg-image($url) {
+  background-image: url("/static/" + $url + "_2x.png");
+  background-size: 100%;
+  -webkit-background-size: 100%;
+  //@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  //  background-size: 100%;
+  //  -webkit-background-size: 100%;
+  //  background-image: url("/static/" + $url + "_3x.png");
+  //}
+}
+
+@mixin ellipsis_1($width) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}
+
+//多行文本溢出
+@mixin morelineEllipsis($line:2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  autoprefixer: off;
+  -webkit-box-orient: vertical;
+  autoprefixer: on;
+  word-break: break-all;
+}
+
+/*1px边框*/
+@mixin border-1px($color:$u-border-color,$direction:top) {
+  position: relative;
+  &:after {
+    position: absolute;
+    /* #ifndef APP-NVUE */
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    @if $direction == top {
+      border-bottom: 1px solid $color;
+      right: 0;
+      left: 0;
+      top: 0;
+    } @else if $direction == bottom {
+      border-bottom: 1px solid $color;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+    /* #endif */
+    transform: scaleY(0.5);
+  }
+}
+
+/*取消1px边框*/
+@mixin border-none() {
+  &:after {
+    display: none;
+  }
+}
+
+// 定义混入指令，用于在非nvue环境下的flex定义，因为nvue没有display属性，会报错
+@mixin vue-flex($direction: row) {
+  /* #ifndef APP-NVUE */
+  display: flex;
+  flex-direction: $direction;
+  /* #endif */
+}
