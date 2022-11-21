@@ -10,7 +10,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types"]
+    "types": ["@dcloudio/types"],
+    "baseUrl": ".",
+    "paths": {
+      // 当没有设置"baseUrl"时，不允许非相对路径"src/*"
+      "/@/*":["src/*"] 
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
