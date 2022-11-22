@@ -1,21 +1,39 @@
+// tsconfig.json详细配置: https://blog.csdn.net/oBoLuoMi1/article/details/121697267
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "esnext", // 目标语言的版本
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types"],
-    "baseUrl": ".",
+    "module": "esnext", // 生成代码的模板标准
+    "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+    "strict": true, // 开启所有严格的类型检查
+    "strictFunctionTypes": false, // 是否启用对函数类型的严格检查，默认：false。
+    "allowJS": true, // 允许编译器编译JS，JSX文件,默认：false。
+    "jsx": "preserve", // 指定 jsx 格式
+    "sourceMap": true, // 生成目标文件的sourceMap文件
+    "resolveJsonModule": true, //是否解析 JSON 模块，默认：false。
+    "esModuleInterop": true, // 允许export=导出，由import from 导入
+    "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错)，默认：false。
+    "noUnusedParameters": true, // 检查未使用的函数参数(只提示不报错)，默认：false。
+    "lib": ["esnext", "dom"], // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+    "types": ["@dcloudio/types"], // 加载的声明文件包
+    "typeRoots": ["./node_modules/@types/", "./types"], // 指定声明文件或文件夹的路径列表，默认时node_modules/@types
+    "noImplicitAny": false, //是否禁止隐式的any类型，默认：false。
+    "skipLibCheck": true, //是否跳过声明文件的类型检查，这可以在编译期间以牺牲类型系统准确性为代价来节省时间，默认：false。
+    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
+    // 路径映射，相对于baseUr
     "paths": {
       // 当没有设置"baseUrl"时，不允许非相对路径"src/*"
-      "/@/*":["src/*"] 
+      "/@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "vite.config.ts"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.js"]
 }
