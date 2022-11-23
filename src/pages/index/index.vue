@@ -2,17 +2,29 @@
   <view class="content">
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <view class="title">{{ title }}</view>
     </view>
+
+    <button hover-class="button-hover" @click="changeTitle">修改 title</button>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
 import { test } from "/@/utils";
+import { useAppStore } from "/@/store/modules/app";
 
-const title = ref("Hello");
-console.log(test("Hello World"));
+// 获取 store 中的值
+const useAppState = useAppStore();
+const title = computed(() => useAppState.getTitle);
+
+// 调用 store 中的方法进行修改值
+function changeTitle() {
+  useAppState.changeTitle();
+
+  // 调用 utils 中的方法
+  console.log("utils --> ", test("Hello World"));
+}
 </script>
 
 <style>
@@ -40,5 +52,6 @@ console.log(test("Hello World"));
 .title {
   font-size: 36rpx;
   color: #8f8f94;
+  margin-bottom: 20px;
 }
 </style>

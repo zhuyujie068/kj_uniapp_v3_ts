@@ -7,7 +7,7 @@
    pages           页面
    service         api服务
    static          静态文件
-   store           vuex
+   store           Pinia 
    style           公共样式
    utils           工具方法
 ```
