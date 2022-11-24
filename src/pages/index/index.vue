@@ -25,6 +25,8 @@ function changeTitle() {
   // 调用 utils 中的方法
   console.log("utils --> ", test("Hello World"));
 }
+
+console.log('使用 .env 环境变量-->',import.meta.env.VITE_APP_TITLE)
 </script>
 
 <style>
