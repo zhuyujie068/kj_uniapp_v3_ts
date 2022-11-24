@@ -2,7 +2,7 @@
   <view class="content">
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
-      <view class="title">{{ title }}</view>
+      <view class="title mb-5 bg-red-200">{{ title }}</view>
     </view>
 
     <button hover-class="button-hover" @click="changeTitle">修改 title</button>
@@ -52,6 +52,5 @@ function changeTitle() {
 .title {
   font-size: 36rpx;
   color: #8f8f94;
-  margin-bottom: 20px;
 }
 </style>
