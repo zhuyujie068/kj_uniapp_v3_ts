@@ -1,11 +1,12 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
+    <view class="text-area mt-20">
       <view class="title mb-5 bg-red-200">{{ title }}</view>
     </view>
 
     <button hover-class="button-hover" @click="changeTitle">修改 title</button>
+
+    <button class="mt-6" hover-class="button-hover" @click="skip">跳转</button>
   </view>
 </template>
 
@@ -26,7 +27,13 @@ function changeTitle() {
   console.log("utils --> ", test("Hello World"));
 }
 
-console.log('使用 .env 环境变量-->',import.meta.env.VITE_APP_TITLE)
+console.log("使用 .env 环境变量-->", import.meta.env.VITE_APP_TITLE);
+
+function skip() {
+  uni.navigateTo({
+    url: "/pages/index/test",
+  });
+}
 </script>
 
 <style>
