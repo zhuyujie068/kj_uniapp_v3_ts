@@ -1,6 +1,7 @@
 <template>
   <view class="content">
-    <view class="text-area mt-20">
+    <view class="mt-20">{{ newDate }}</view>
+    <view class="text-area mt-2">
       <view class="title mb-5 bg-red-200">{{ title }}</view>
     </view>
 
@@ -11,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import dayjs from "dayjs";
+import { computed, ref } from "vue";
 import { test } from "/@/utils";
 import { useAppStore } from "/@/store/modules/app";
 
@@ -26,6 +28,10 @@ function changeTitle() {
   // 调用 utils 中的方法
   console.log("utils --> ", test("Hello World"));
 }
+
+// 当前时间
+const newDate = ref<string>("");
+newDate.value = dayjs().format("YYYY-MM-DD HH:mm:ss");
 
 console.log("使用 .env 环境变量-->", import.meta.env.VITE_APP_TITLE);
 

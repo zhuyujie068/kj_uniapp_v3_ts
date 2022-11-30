@@ -48,6 +48,7 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3061020221121002",
     "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3061020221121002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3061020221121002",
+    "dayjs": "^1.11.6",
     "pinia": "^2.0.25",
     "pinia-plugin-persist-uni": "^1.2.0",
     "pinia-plugin-persistedstate": "^2.4.0",
