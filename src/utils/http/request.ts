@@ -1,5 +1,5 @@
 
-import { apiWhiteList } from "./whiteList";
+import { apiWhiteList } from "./apiWhiteList";
 import { showLoading, hideLoading, showToast } from "/@/utils/index";
 
 // 根地址
@@ -15,6 +15,7 @@ uni.addInterceptor('request', {
 
     // 当本地没有token，并且接口地址没在白名单内，一律跳转登录页面
     if (!uni.getStorageSync('token') && !apiWhiteList.includes(args.url)) {
+      showToast('登录信息已过期，请重新登录');
       uni.navigateTo({
         url: "/pages/index/index",
       });
@@ -27,7 +28,7 @@ uni.addInterceptor('request', {
 
     //设置请求头及token
     args.header = {
-      'content-type': args.method === 'POST' ? 'application/json' : 'application/x-www-form-urlencoded',
+      'content-type': args.method === 'POST' ? 'application/json; charset=utf-8' : 'application/x-www-form-urlencoded',
       'Authori-zation': 'Bearer ' + uni.getStorageSync('token')
     }
   },
