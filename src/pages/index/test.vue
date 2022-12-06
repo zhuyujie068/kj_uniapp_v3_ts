@@ -8,18 +8,24 @@
 </template>
 
 <script setup lang="ts">
-import { post_test } from "/@/service/_api/app";
+import { post_test, get_test } from "/@/service/_api/app";
 
 // 调用 store 中的方法进行修改值
 async function request() {
-   post_test({
-    abs:'1',
-    zxa:'2',
-   }).then((result) => {
-   console.log('-1111-result-',result)
-  }).catch((err) => {
-   console.log('--err-',err)
+  get_test().then(res => {
+    console.log("---", res);
   });
+
+  post_test({
+    abs: "1",
+    zxa: "2",
+  })
+    .then(result => {
+      console.log("-1111-result-", result);
+    })
+    .catch(err => {
+      console.log("--err-", err);
+    });
 }
 </script>
 
