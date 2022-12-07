@@ -14,8 +14,8 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { computed, ref } from "vue";
-import { test } from "/@/utils";
 import { useAppStore } from "/@/store/modules/app";
+import { jointUrl } from "/@/utils/index";
 
 // 获取 store 中的值
 const useAppState = useAppStore();
@@ -24,9 +24,6 @@ const title = computed(() => useAppState.getTitle);
 // 调用 store 中的方法进行修改值
 function changeTitle() {
   useAppState.changeTitle();
-
-  // 调用 utils 中的方法
-  console.log("utils --> ", test("Hello World"));
 }
 
 // 当前时间
@@ -37,9 +34,12 @@ console.log("使用 .env 环境变量-->", import.meta.env.VITE_APP_TITLE);
 
 function skip() {
   uni.navigateTo({
-    url: "/pages/index/test",
+    url: "/pages/index/test?a=a&b=b&c=c",
   });
 }
+
+console.log(jointUrl('/pages/login/login',{a:1,b:2}))
+
 </script>
 
 <style>
