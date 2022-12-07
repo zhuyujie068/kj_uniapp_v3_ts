@@ -57,7 +57,7 @@ export async function interceptor() {
  */
 function execute() {
   showToast('请先登录')
-  uni.navigateTo({
+  uni.redirectTo({
     url: "/pages/login/index"
   })
 }
