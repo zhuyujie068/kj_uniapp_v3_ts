@@ -46,3 +46,4 @@
 
  ### 注意事项
 1. **微信小程序**本身不支持由 **Tailwind/Windi CSS** 产生的选择器名称中包含的一些特殊转义字符（如 \[ \! \. 等），可以使用 @dcasia/mini-program-tailwind-webpack-plugin 插件可以使其支持，但是使用了该插件如果打包成 H5 会出现样式错误、样式失效。**如果该套代码需要在 微信小程序、H5 平台使用，不建议使用 Tailwind/Windi CSS**，如果现在想使用的话，可以在打包微信小程序的时候才使用该插件，打包H5的时候不使用该插件。
+2. 微信小程序：[报错fail webview count limit exceed 解决方法](https://www.cnblogs.com/zwh0910/p/14034105.html)
