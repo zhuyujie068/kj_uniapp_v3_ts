@@ -1,4 +1,4 @@
-import { post,get } from '../../utils/http/request';
+import { post,get } from '../utils/http/request';
 
 export enum Api {
   TEST = '/jd-wit-ms/site/query', //测试接口
