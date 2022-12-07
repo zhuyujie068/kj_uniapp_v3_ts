@@ -3,7 +3,6 @@
 .
 ├── .hbuilderx # hbuilderx 配置
 │   └── launch # 启动调试时相关设置
-├── dist # 打包脚本相关
 ├── node_modules # npm 所有依赖的包
 ├── src
 │   ├── api # api接口
