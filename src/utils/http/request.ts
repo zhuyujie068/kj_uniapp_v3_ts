@@ -3,7 +3,12 @@ import { apiWhiteList } from "./apiWhiteList";
 import { showLoading, hideLoading, showToast } from "/@/utils/index";
 
 // 根地址
-const baseUrl = import.meta.env.VITE_REQUEST_URL
+let baseUrl = import.meta.env.VITE_REQUEST_URL
+
+// #ifdef MP-WEIXIN
+// 运行在 微信小程序开发者工具中 不需要代理
+baseUrl = import.meta.env.VITE_PROXY_API
+// #endif
 
 /**
  * 添加拦截器
@@ -16,8 +21,8 @@ uni.addInterceptor('request', {
     // 当本地没有token，并且接口地址没在白名单内，一律跳转登录页面
     if (!uni.getStorageSync('token') && !apiWhiteList.includes(args.url)) {
       showToast('登录信息已过期，请重新登录');
-      uni.navigateTo({
-        url: "/pages/index/index",
+      uni.redirectTo({
+        url: '/pages/login/index'
       });
       hideLoading()
       return false
@@ -65,8 +70,8 @@ function processingCode(code: string) {
         success: function (res) {
           if (res.confirm) {
             //去登录页面
-            uni.navigateTo({
-              url: '/pages/index/index'
+            uni.redirectTo({
+              url: '/pages/login/index'
             });
           } else if (res.cancel) {
             console.log('用户点击取消');
